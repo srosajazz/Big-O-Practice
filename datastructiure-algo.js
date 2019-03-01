@@ -165,3 +165,36 @@ newArray.push('Boston');
 newArray.push('New York');
 newArray.delete(2)
 console.log(newArray);
+
+
+//Create a function that reverses a string:
+//'hi My name is Sergio' 
+
+function reverse(str){
+    //check input
+    if(!str || str.length < 2 || typeof str !== 'string'){
+      return 'Strings not found';
+    }
+      //reverse the array
+      const backwards = [];
+      const totalItems = str.length -1;
+      for(let i = totalItems; i >= 0; i--){
+        backwards.push(str[i]);
+      }
+      console.log(backwards);
+      return backwards.join('');
+    }
+  
+  //option 2
+    function reverse2(str) {
+      return str.split(' ').reverse().join('');
+    }
+  
+    //option 3
+  const reverse3 = str => str.split(' ').reverse();
+  reverse2('Hi My name is Sergio');
+  
+    //option 4   Expressions - Spread syntax
+  const reverse4 = str => [...str].reverse().join('');
+  reverse4('Hi My name is Sergio');
+  
