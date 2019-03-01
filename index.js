@@ -1,21 +1,47 @@
-//#1 -- For loop in Javascript.
 const fish = ['dory', 'bruce', 'marlin', 'nemo'];
 const nemo = ['nemo'];
-const everyone = ['dory', 'bruce', 'marlin', 'nemo', 'gill', 'bloat', 'nigel', 'squirt', 'darla', 'hank'];
+const everyone = ['dory', 'bruce', 'marlin', 'gill', 'bloat', 'nigel', 'squirt', 'darla', 'hank','nemo'];
 const large = new Array(100000).fill('nemo');
 
 function findNemo2(fish) {
   // let t0 = performance.now();
   for (let i = 0; i < fish.length; i++) {
+      console.log('running')
     if (fish[i] === 'nemo') {
       console.log('Found NEMO!');
+      break;
     }
   }
   // let t1 = performance.now();
   // console.log("Call to find Nemo took " + (t1 - t0) + " milliseconds.");
 }
 
-findNemo2(large)// O(n) --> Linear Time
+findNemo2(everyone)// O(n) --> Linear Time
+
+
+//==================array.forEach(element => {
+    const findNemo2 = array => {
+        array.forEach(fish => {  // same as => for (let i = 0; i < fish.length; i++)
+            if(fish === 'nemo'){
+                console.log("Found Nemo!")
+            }
+        })
+    }
+
+    const findNemo3 = array => {
+        for(let fish of array) {
+            if(fish === 'nemo'){
+                console.log("Found Nemo!")
+            }
+         }
+    }
+    
+
+    findNemo2(everyone)
+    findNemo3(everyone)
+
+
+});
 
 // =========================O(1)  -> Constant Time ============
 const boxes = [0, 1,2,3,4,5];
@@ -61,3 +87,20 @@ let whoAmI = "I don't know"; // O(1)
 }
 
 //BIG O (4 + 5n) = O(n)
+
+// log all pairs of Array
+const boxes = ['a', 'b','c','d','e'];
+
+function logAllPAirsOfArray(array){
+    for(let i = 0; i < array.length; i++){
+        for(let j = 0; j < array.length; j++){
+            console.log(array[i], array[j]);
+        }
+
+    }
+}
+logAllPAirsOfArray(boxes);//O(n^2) = O(n2) => Qudratic Time
+
+//------------------------
+
+'hellosjsjsjsjssjshdhd'.length // 0(1) =>in javascript
