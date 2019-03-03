@@ -185,16 +185,15 @@ function reverse(str){
       return backwards.join('');
     }
   
-  //option 2
+//option 2
     function reverse2(str) {
       return str.split(' ').reverse().join('');
     }
-  
-    //option 3
+//option 3
   const reverse3 = str => str.split(' ').reverse();
   reverse2('Hi My name is Sergio');
   
-    //option 4   Expressions - Spread syntax
+//option 4   Expressions - Spread syntax
   const reverse4 = str => [...str].reverse().join('');
   reverse4('Hi My name is Sergio');
   
