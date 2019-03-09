@@ -1,3 +1,54 @@
+//========Arrays-Static============//
+const strings = ['a','b', 'c','d'];
+//4*4 = 16 bytes of storage
+
+//lookup
+strings[2]; //O(1)
+
+//push()
+strings.push('e'); //O(1)
+
+//pop()
+strings.pop();
+strings.pop(); //O(1)
+
+//unshift
+strings.unshift('x'); //O(n)
+
+//splice
+strings.splice(2, 0, 'guitar'); //O(n)
+
+console.log(strings); 
+
+//====Static vs *Dynamic Arrays======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //========HashTable Template============//
 
 class HashTable{
@@ -19,10 +70,10 @@ class HashTable{
 // set function
   set(key, value){
     let address = this._hash(key);
-    if (!this.data[address]){
+    if (!this.data[address]){ // check for colusion
       this.data[address] = [];
     }
-     this.data[address].push([key, value]);
+     this.data[address].push([key, value]); // check for colusion
      return this.data;
   }// O(1)
 
@@ -229,6 +280,8 @@ myLinkedList.insert(20, 100);
 myLinkedList.printList();
 myLinkedList.remove(2);
 //console.log(myLinkedList);
+
+//======================reverse()====================
 
 
 

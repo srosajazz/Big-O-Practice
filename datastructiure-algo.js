@@ -1,7 +1,7 @@
 // log all pairs of Array
 const boxes = ['a', 'b','c','d','e'];
 
-function logAllPAirsOfArray(array){
+function logAllPairsOfArray(array){
     for(let i = 0; i < array.length; i++){
         for(let j = 0; j < array.length; j++){
             console.log(array[i], array[j]);
@@ -9,7 +9,7 @@ function logAllPAirsOfArray(array){
 
     }
 }
-logAllPAirsOfArray(boxes); //O(n^2)
+logAllPairsOfArray(boxes); //O(n^2)
 
 
 const array1 = ['a','b', 'c','x'];
@@ -29,7 +29,7 @@ function containsCommonItem(arr1, arr2){
 O(1) - Space Complexity
 containsCommonItem(array1, array2);
 
-===============BETTER SOLUTION:
+//===============BETTER SOLUTION:
 
 array1 == > obj {
 
@@ -38,7 +38,7 @@ b: true
 c: true
 x: true
 }
-array2[index] === obj.
+array2[index] === obj;
 const array1 = ['a','b', 'c','x'];
 //Compare array2 against array1:
 const array2 = ['z','y', 'a'];
@@ -115,85 +115,167 @@ int.push(300)
 console.log(int)
 
 
-class MyArray {
-    constructor(){
-        this.length = 0;
-        this.data= {};
-    }
-    //get
-    get(index) {
-        return this.data[data]
-    }
-    //push
-    push(item) {
-      this.data[this.length] = item;
-      this.length++
-      return this.lenth;
-    }
+//======Implementing An Array========
+class Myarray{
+  constructor(){
+    this.length = 0;
+    this.data = {};
+  }
+  //get()
+  get(index){
+    return this.data[index];
+  }
+//push()
+push(item) {
+  this.data[this.length] = item;
+  this.length++;
+  return this.length;
 
-    //pop
-    pop(){
-      const lastItem = this.data[this.length-1];
-      delete this.data[this.length-1];
-      this.length--;
-      return lastItem;
+  }
+  //pop()
+  pop(){
+    const lastItemRemove = this.data[this.length-1];
+    delete this.data[this.length-1];
+    this.length--;
+    return lastItemRemove;
+  }
+  //delete()
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+    //return lastItem;
+  } 
+  //shif all numbers
+  shiftItems(index){
+    for(let i = index; i < this.length -1; i++){
+      this.data[i] = this.data[i+1];
     }
-
-    //delete
-    delete(index) {
-      const item = this.data[index];
-      this.shiftItems(index);
-       return lastItem;
-    }
-    shiftItems(index){
-      for(let i = index; i < this.length -1; i++){
-        this.data[i] = this.data[i+1];
-      }
-      delete this.data[this.length-1];
-      this.length--;
-    }
-}
-
-const newArray = new MyArray();
-newArray.push('Sergio');
-newArray.push('Rosa');
-newArray.push('!');
+    delete this.data[this.length-1]
+    this.length--;
+  }
+} //O(n)
+const newArray = new Myarray();
+newArray.push('Bass');
+newArray.push('Guitar');
+//newArray.push('Viola');
 // newArray.pop();
 // newArray.pop();
-newArray.delete(0)
-newArray.push('Boston');
-newArray.push('New York');
-newArray.delete(2)
+newArray.delete(0);
+newArray.push('Viola2');
+newArray.push('GrandPiano');
+
 console.log(newArray);
 
-
-//Create a function that reverses a string:
-//'hi My name is Sergio' 
-
+//================Reverse String===============
 function reverse(str){
-    //check input
-    if(!str || str.length < 2 || typeof str !== 'string'){
-      return 'Strings not found';
-    }
-      //reverse the array
-      const backwards = [];
-      const totalItems = str.length -1;
-      for(let i = totalItems; i >= 0; i--){
-        backwards.push(str[i]);
-      }
-      console.log(backwards);
-      return backwards.join('');
-    }
-  
-//option 2
-    function reverse2(str) {
-      return str.split(' ').reverse().join('');
-    }
-//option 3
-  const reverse3 = str => str.split(' ').reverse();
-  reverse2('Hi My name is Sergio');
-  
-//option 4   Expressions - Spread syntax
-  const reverse4 = str => [...str].reverse().join('');
-  reverse4('Hi My name is Sergio');
-  
+  //1.check input
+  if (!str || str.length < 2 || typeof str !== 'string'){
+    return 'Not found the string';
+  }
+  //create two array
+   const backwards = [];
+   const totalItems = str.length -1;
+   for(let i = totalItems; i >= 0; i--){
+     backwards.push(str[i]);
+   }
+   console.log(backwards);
+
+  return backwards.join('');
+}
+
+reverse('hello');
+
+
+// 2: reverse2
+function reverse2(str){
+  return str.split('').reverse().join('');
+}
+
+// 3. reverse2 
+const reverse3 = str => str.split('').reverse().join('');
+//reverse3('Apple');
+
+//4. reverse4 - new ES6 - Spread syntax
+const reverse4 = str => [...str].reverse().join('');
+
+//reverse4('you');
+
+//===================BEST TIME USE Arrays=========
+//1. FAST LOOKUPS
+//2. FAST push/pop()
+//3. ORDED
+
+//console
+//SLOW
+//SLOW DELETION
+// FIXED SIZE*
+// *if using static array
+
+
+//========Arrays-Static============//
+const strings = ['a','b', 'c','d'];
+//4*4 = 16 bytes of storage
+
+//lookup
+strings[2]; //O(1)
+
+//push()
+strings.push('e'); //O(1)
+
+//pop()
+strings.pop();
+strings.pop(); //O(1)
+
+//unshift
+strings.unshift('x'); //O(n)
+
+//splice
+strings.splice(2, 0, 'guitar'); //O(n)
+
+console.log(strings); 
+
+//====Static vs *Dynamic Arrays======
+
+// reference type
+var object1 = { value: 10 };
+var object2 = object1;
+var object3 = { value: 10 };
+
+
+//context vs. scope
+// function(){
+//   let a = a;
+// }
+const object4 = {
+  a: function(){
+    console.log(this);
+  }
+}
+
+// instantiation
+
+class Player {
+  constructor(name, type){
+    console.log(this);
+    this.name = name;
+    this.type = type;
+  }
+  introduce(){
+    console.log(`Hello I am ${this.name}, I'm a ${this.type}`);
+  }
+}
+
+class Wizard extends Player {
+  constructor(name, type){
+    super(name, type);
+  }
+  play(){
+    console.log(`WEEEEEEEE I'm a ${this.type}`);
+  }
+}
+
+// const wizard1 = new Wizard('Mike', 'Captan');
+
+// const wizard2 = new Wizard('Mike', 'Magic');
+
+
